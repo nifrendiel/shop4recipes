@@ -10,30 +10,37 @@ import { Recipe } from './recipe.model';
 export class RecipeService {
     recipesChanged = new Subject<Recipe[]>();
 
-    private recipes: Recipe[] = [
-        new Recipe(
-            'Vegan meal', 
-            'A great vegan meal', 
-            'https://vegan.rocks/blog/vegan-cheese/feature_hud861e682c4abc7b13b5a4e3849d7046f_973666_1600x900_fill_q75_box_smart1.jpg',
-            [
-                new Ingredient('Apple', 2),
-                new Ingredient('Crackers', 10)
-            ]
-        ),
-        new Recipe(
-            'Chocolate moelleux', 
-            'The best chocolate cake!', 
-            'https://upload.wikimedia.org/wikipedia/commons/e/e3/Amandine_cake.jpg',
-            [
-                new Ingredient('Chocolate', 5),
-                new Ingredient('Eggs', 2),
-                new Ingredient('Flour', 1),
-                new Ingredient('Milk', 1)
-            ]
-        )
-    ];
+    // private recipes: Recipe[] = [
+    //     new Recipe(
+    //         'Vegan meal', 
+    //         'A great vegan meal', 
+    //         'https://vegan.rocks/blog/vegan-cheese/feature_hud861e682c4abc7b13b5a4e3849d7046f_973666_1600x900_fill_q75_box_smart1.jpg',
+    //         [
+    //             new Ingredient('Apple', 2),
+    //             new Ingredient('Crackers', 10)
+    //         ]
+    //     ),
+    //     new Recipe(
+    //         'Chocolate moelleux', 
+    //         'The best chocolate cake!', 
+    //         'https://upload.wikimedia.org/wikipedia/commons/e/e3/Amandine_cake.jpg',
+    //         [
+    //             new Ingredient('Chocolate', 5),
+    //             new Ingredient('Eggs', 2),
+    //             new Ingredient('Flour', 1),
+    //             new Ingredient('Milk', 1)
+    //         ]
+    //     )
+    // ];
 
+    private recipes: Recipe[] = [];
+    
     constructor(private slService: ShoppingListService){}
+
+    setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
+        this.recipesChanged.next(this.recipes.slice());
+    }
 
     getRecipes() {
         // slice() => returns a copy of the original so you never access the original recipe
