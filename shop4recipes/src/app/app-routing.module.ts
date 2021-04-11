@@ -5,6 +5,7 @@ import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edi
 import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-start.component';
 import { RecipesDetailComponent } from './components/recipes/recipes-detail/recipes-detail.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
+import { RecipesResolverService } from './components/recipes/recipes.resolver.service';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 
 const routes: Routes = [
@@ -21,10 +22,10 @@ const routes: Routes = [
         path: 'new', component: RecipeEditComponent
       },
       {
-        path: ':id', component: RecipesDetailComponent
+        path: ':id', component: RecipesDetailComponent, resolve: [RecipesResolverService]
       },
       {
-        path: ':id/edit', component: RecipeEditComponent
+        path: ':id/edit', component: RecipeEditComponent, resolve: [RecipesResolverService]
       }
     ]
   },

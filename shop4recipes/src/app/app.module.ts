@@ -18,6 +18,7 @@ import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-s
 import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edit.component';
 import { RecipeService } from './components/recipes/recipe.service';
 import { DataStorageService } from './components/sharedComponents/data.storage.service';
+import { RecipesResolverService } from './components/recipes/recipes.resolver.service';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { DataStorageService } from './components/sharedComponents/data.storage.s
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ShoppingListService, RecipeService, DataStorageService],
+  providers: [ShoppingListService, RecipeService, DataStorageService, RecipesResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
