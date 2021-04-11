@@ -25,6 +25,10 @@ private idChangeSub: Subscription;
     );
   }
 
+  onEditItem(index: number) {
+    this.slService.startedEditing.next(index);
+  }
+
   ngOnDestroy(): void {
     this.idChangeSub.unsubscribe();
   }
